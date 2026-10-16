@@ -1,0 +1,57 @@
+Integrantes:
+Julian David Silva Oyola
+Darwin Joel Diaz Martinez
+Victoria Sofia Lobo Gallego
+Yenifer Yasmid Romero Gelvez
+
+Respuestas del parcial con su sustentación
+
+1. B. La sustitución de comandos $(date +%Y%m%d_%H%M%S) ejecuta date y reemplaza la expresión por su salida, que se usa en el nombre del archivo para que cada copia sea distinta.
+
+2. B. El operador >> anexa la línea al final del archivo y conserva el contenido anterior; > lo sobrescribiría.
+
+3. A. Para comparar números enteros en un if se usa -gt (mayor que): if [ "$uso" -gt 85 ]. El operador = compara cadenas de texto.
+
+4. C. */30 * * * * ejecuta el script cada 30 minutos durante todo el día. 30 * * * * lo ejecuta solo una vez por hora, en el minuto 30.
+
+5. D. Un bucle while IFS=',' read -r usuario nombre grupo; do ... done < archivo.csv lee el archivo línea por línea y separa los campos por coma.
+
+6. D. Se necesitan ambas informaciones: useradd requiere privilegios de superusuario (I) y los nombres no deben existir ya, porque si no el comando falla para ese usuario (II).
+
+7. A. La afirmación 1 es verdadera: -mtime +7 selecciona archivos modificados hace más de siete días. La afirmación 2 es falsa: -mtime evalúa la modificación, el último acceso se evalúa con -atime.
+
+8. C. Ambas son verdaderas y la razón explica la afirmación: si la variable está vacía, la ruta del rm -rf puede quedar como "/" y borraría la raíz del sistema, por eso se valida antes.
+
+9. B. systemctl is-active --quiet devuelve código 0 si el servicio está en ejecución y distinto de cero si no, lo que se puede usar directamente en un if.
+
+10. D. El orden lógico es I, II, IV, III: consultar el estado, reiniciar el servicio detenido, comprobar de nuevo el estado y registrar el resultado final en la bitácora.
+
+11. A. grep -i error archivo | wc -l filtra las líneas con "error" ignorando mayúsculas y wc -l cuenta las líneas resultantes (wc -w contaría palabras).
+
+12. B. En awk, $5 es el quinto campo de cada línea, por eso print $5 muestra solo el nombre del proceso.
+
+13. C. sudo da privilegios de superusuario y -y acepta automáticamente las confirmaciones de apt-get.
+
+14. A. comando && echo "OK" >> log || echo "FALLO" >> log. El operador && ejecuta lo que sigue solo si hubo éxito y || solo si hubo fallo.
+
+15. B. "${hosts[@]}" entrega cada elemento del arreglo por separado. "${hosts[*]}" los junta en una sola cadena y ${#hosts[@]} solo da la cantidad de elementos.
+
+16. D. Si el host está apagado, ping devuelve un valor distinto de cero, el if lo toma como falso y se ejecuta la rama else, registrándolo como inaccesible.
+
+17. C. En case los patrones se separan con | y se cierra con paréntesis: *.jpg|*.png|*.gif)
+
+18. A. trap con la pseudoseñal EXIT ejecuta la función de limpieza cuando el script termina por cualquier causa. SIGKILL y SIGSTOP no se pueden capturar con trap.
+
+19. B. ls -t ordena del más reciente al más antiguo, tail salta los N primeros (los más recientes) y lo que queda, que son las copias más antiguas, se borra.
+
+20. C. /etc/passwd usa dos puntos como separador y el UID es el campo 3: awk -F: '$3 == 0' /etc/passwd
+
+21. D. ss -tuln muestra los sockets TCP (-t) y UDP (-u) en escucha (-l) con puertos en forma numérica (-n). Para ver los procesos se necesitaría -p.
+
+22. A. OFS es el separador de campos de salida; con OFS="," y la asignación $1=$1 awk reconstruye cada línea separada por comas.
+
+23. D. systemctl enable --now apache2 habilita el servicio para cada arranque y lo inicia de inmediato en un solo comando.
+
+24. A. $# contiene la cantidad de argumentos recibidos, por lo que se compara con 2 y se termina con exit 1 si es diferente.
+
+25. C. PS3 es la variable que define el texto del prompt que muestra la instrucción select.
